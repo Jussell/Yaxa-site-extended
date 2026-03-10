@@ -1,71 +1,85 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ScrollReveal } from '../components/ScrollReveal';
-import { ArrowRight, Check } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Linkedin, MapPin, Phone } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [isFormOpen, setIsFormOpen] = useState(true); 
-  const [selectedOption, setSelectedOption] = useState<'sell' | 'expand' | null>('sell');
-
   return (
-    <div className="pt-40 pb-24 bg-[#1c1c1c] min-h-screen text-white px-6 md:px-12">
+    <div className="pt-40 pb-24 bg-white min-h-screen text-black px-6 md:px-12">
         <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-                <div 
-                  className={`flex items-end justify-between border-b border-white pb-4 transition-all duration-700 cursor-pointer group ${isFormOpen ? 'mb-12 md:mb-20' : 'mb-0'}`}
-                  onClick={() => setIsFormOpen(!isFormOpen)}
-                >
-                  <h1 className="text-4xl md:text-6xl font-thin text-white tracking-tight whitespace-nowrap">Contact us</h1>
-                  <div className={`bg-white p-4 md:p-6 flex items-center justify-center transition-transform duration-500 ${isFormOpen ? 'rotate-90' : 'rotate-0'}`}>
-                    <ArrowRight className="w-6 h-6 md:w-10 md:h-10 text-black" strokeWidth={1} />
-                  </div>
+                <div className="border-b border-gray-200 pb-6 mb-16">
+                  <h1 className="text-4xl md:text-6xl font-thin tracking-tight text-gray-900">Get in touch</h1>
                 </div>
             </ScrollReveal>
             
-            <AnimatePresence>
-              {isFormOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 mt-10">
-                        <div>
-                          <p className="text-[8px] font-light text-gray-500 mb-6 tracking-[0.3em] uppercase">Lets talk</p>
-                          <h3 className="text-base md:text-lg tracking-[0.4em] font-normal mb-8 uppercase text-white">I AM HERE TO</h3>
-                          <div className="space-y-4 mb-10">
-                            {[ {id: 'sell', label: 'Sell your brands'}, {id: 'expand', label: 'Expand my brand'} ].map((opt) => (
-                              <label key={opt.id} className="flex items-center gap-4 cursor-pointer group" onClick={() => setSelectedOption(opt.id as any)}>
-                                 <div className={`w-6 h-6 border border-white/40 flex items-center justify-center transition-colors ${selectedOption === opt.id ? 'bg-white' : ''}`}>
-                                    <Check className={`w-4 h-4 text-black transition-opacity ${selectedOption === opt.id ? 'opacity-100' : 'opacity-0'}`} strokeWidth={3} />
-                                 </div>
-                                 <span className="text-[10px] md:text-xs tracking-[0.2em] uppercase font-light text-white group-hover:opacity-70 transition-opacity">{opt.label}</span>
-                              </label>
-                            ))}
-                          </div>
-                        </div>
+            <ScrollReveal delay={0.2}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+                <div>
+                  <h3 className="text-2xl font-light mb-8 text-gray-900">Direct Contact</h3>
+                  <p className="text-gray-600 font-light leading-relaxed mb-10">
+                    Whether you're looking to expand your brand or have a general inquiry, our team is ready to assist you. Reach out to us directly through email or connect with us on LinkedIn. You can also use the contact form below.
+                  </p>
+                  
+                  <div className="space-y-6">
+                    <a href="mailto:contact@yaxa.com" className="flex items-center gap-6 group">
+                      <div className="w-14 h-14 bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors rounded-full">
+                        <Mail className="w-5 h-5 text-gray-800" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Email</p>
+                        <p className="text-sm font-medium text-gray-900">contact@yaxa.com</p>
+                      </div>
+                    </a>
+                    
+                    <a href="https://linkedin.com/company/yaxa" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group">
+                      <div className="w-14 h-14 bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors rounded-full">
+                        <Linkedin className="w-5 h-5 text-gray-800" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">LinkedIn</p>
+                        <p className="text-sm font-medium text-gray-900">YAXA Official</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
 
-                        <div className="space-y-6">
-                          <div className="grid grid-cols-1 gap-6">
-                            {['Name', 'Email', 'Phone'].map((field) => (
-                              <div key={field} className="space-y-1">
-                                <label className="text-[10px] font-light text-white/40 uppercase tracking-widest">{field}</label>
-                                <input type={field === 'Email' ? 'email' : 'text'} className="w-full h-11 bg-white text-black px-4 text-sm font-light focus:outline-none" />
-                              </div>
-                            ))}
-                            <div className="space-y-1">
-                              <label className="text-[10px] font-light text-white/40 uppercase tracking-widest">Message</label>
-                              <textarea rows={4} className="w-full bg-white text-black p-4 text-sm font-light focus:outline-none resize-none"></textarea>
-                            </div>
-                          </div>
-                          <button className="w-full border border-white py-4 mt-6 text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:bg-white hover:text-black transition-all duration-500">Send</button>
+                <div>
+                  <h3 className="text-2xl font-light mb-8 text-gray-900">Our Offices</h3>
+                  <div className="space-y-10">
+                    <div>
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 bg-gray-50 flex items-center justify-center rounded-full flex-shrink-0">
+                          <MapPin className="w-5 h-5 text-gray-800" strokeWidth={1.5} />
                         </div>
+                        <div className="pt-2">
+                          <p className="text-sm font-medium mb-2 text-gray-900">Headquarters</p>
+                          <p className="text-sm text-gray-600 font-light leading-relaxed">
+                            123 Business Avenue<br />
+                            Suite 400<br />
+                            Miami, FL 33131<br />
+                            United States
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                    
+                    <div>
+                      <div className="flex items-start gap-6">
+                        <div className="w-14 h-14 bg-gray-50 flex items-center justify-center rounded-full flex-shrink-0">
+                          <Phone className="w-5 h-5 text-gray-800" strokeWidth={1.5} />
+                        </div>
+                        <div className="pt-2">
+                          <p className="text-sm font-medium mb-2 text-gray-900">Phone</p>
+                          <p className="text-sm text-gray-600 font-light">
+                            +1 (555) 123-4567
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
         </div>
     </div>
   );

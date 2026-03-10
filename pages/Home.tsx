@@ -30,24 +30,24 @@ const ServiceBlock = ({ service, index, isLast }: { service: any, index: number,
   const imageY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
 
   return (
-    <div ref={containerRef} className="w-full h-[100svh] relative flex flex-col bg-white overflow-hidden">
+    <div ref={containerRef} className="w-full min-h-[100svh] relative flex flex-col bg-white overflow-hidden">
       {/* White Panel */}
-      <div className="w-full flex-1 bg-white p-8 flex flex-col justify-center z-10">
-        <h2 className="font-heading font-thin text-[80px] mb-16 text-primary-800 tracking-tight leading-none">
+      <div className="w-full flex-1 bg-white p-8 py-12 flex flex-col justify-center z-10">
+        <h2 className="font-heading font-thin text-6xl md:text-[80px] mb-8 md:mb-16 text-primary-800 tracking-tight leading-none">
           {service.title}
         </h2>
         
-        <div className="mb-16">
-          <h3 className="text-base text-primary-800 font-normal mb-6">valor de marca</h3>
-          <div className="space-y-4">
+        <div className="mb-8 md:mb-16">
+          <h3 className="text-sm md:text-base text-primary-800 font-normal mb-4 md:mb-6">valor de marca</h3>
+          <div className="space-y-2 md:space-y-4">
             {service.values.map((val: string, i: number) => (
-              <p key={i} className="text-[#A3A3A3] font-light text-base">{val}</p>
+              <p key={i} className="text-[#A3A3A3] font-light text-sm md:text-base">{val}</p>
             ))}
           </div>
         </div>
 
         <div>
-          <Link to={service.link} className="text-primary-800 text-base font-normal hover:text-primary-500 transition-colors">
+          <Link to={service.link} className="text-primary-800 text-sm md:text-base font-normal hover:text-primary-500 transition-colors">
             Learn more
           </Link>
         </div>
@@ -58,7 +58,7 @@ const ServiceBlock = ({ service, index, isLast }: { service: any, index: number,
         initial={{ y: "100%" }}
         animate={{ y: isInView ? "0%" : "100%" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full h-[60vh] relative bg-[#A3A3A3] overflow-hidden z-20 shrink-0"
+        className="w-full aspect-[4/5] relative bg-[#A3A3A3] overflow-hidden z-20 shrink-0 flex flex-col justify-center items-center"
       >
         <motion.img 
           style={{ y: imageY, scale: 1.2 }}
@@ -71,13 +71,13 @@ const ServiceBlock = ({ service, index, isLast }: { service: any, index: number,
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.6, delay: isInView ? 0.4 : 0 }}
-          className="relative z-10 flex flex-col justify-center h-full p-8 max-w-md mx-auto"
+          className="relative z-30 flex flex-col justify-center items-center text-center w-full px-8 max-w-md mx-auto"
         >
-          <p className="text-white text-xs font-light leading-relaxed mb-6">
+          <p className="text-white text-sm font-light leading-relaxed mb-8 drop-shadow-md">
             {service.shortDesc}
           </p>
           <Link to="/contact">
-            <button className="border border-white text-white px-6 py-2 text-xs font-light hover:bg-white hover:text-[#A3A3A3] transition-colors">
+            <button className="border border-white text-white px-8 py-3 text-sm font-medium hover:bg-white hover:text-black transition-colors shadow-sm">
               Contact us
             </button>
           </Link>
@@ -147,8 +147,8 @@ const DesktopServicesCarousel = ({ services }: { services: any[] }) => {
           <div key={service.id} className="w-screen h-full flex-shrink-0 snap-start flex">
             
             {/* Left Content */}
-            <div className="w-1/3 h-full flex flex-col justify-center pl-32 pr-12">
-              <h2 className="font-heading font-thin text-[120px] mb-24 text-primary-800 tracking-tight leading-none">
+            <div className="w-1/3 h-full flex flex-col justify-center pl-32 pr-12 relative z-20">
+              <h2 className="font-heading font-thin text-[120px] mb-24 text-primary-800 tracking-tight leading-none whitespace-nowrap drop-shadow-sm">
                 {service.title}
               </h2>
               
@@ -169,7 +169,7 @@ const DesktopServicesCarousel = ({ services }: { services: any[] }) => {
             </div>
 
             {/* Right Image Panel */}
-            <div className="w-2/3 h-full relative bg-[#A3A3A3] overflow-hidden">
+            <div className="w-2/3 h-full relative bg-[#A3A3A3] overflow-hidden z-10">
               <img 
                 src={service.image} 
                 alt={service.title} 

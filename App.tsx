@@ -9,6 +9,7 @@ import History from './pages/History';
 import News from './pages/News';
 import NewsArticle from './pages/NewsArticle';
 import Contact from './pages/Contact';
+import InvictaCaseStudy from './pages/InvictaCaseStudy';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -46,6 +47,7 @@ const App: React.FC = () => {
           <Route path="/history" element={<History />} />
           <Route path="/news" element={<News />} />
           <Route path="/news/:id" element={<NewsArticle />} />
+          <Route path="/case-study/invicta" element={<InvictaCaseStudy />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>

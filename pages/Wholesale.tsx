@@ -78,11 +78,7 @@ const Wholesale: React.FC = () => {
              <ScrollReveal key={brand.name} delay={i * 0.1}>
                 <div 
                   className="flex flex-col items-center group cursor-pointer"
-                  onClick={() => {
-                    if (window.innerWidth < 768) {
-                      setSelectedBrand(brand);
-                    }
-                  }}
+                  onClick={() => setSelectedBrand(brand)}
                 >
                   <div className="aspect-square md:h-32 w-full bg-gray-50 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-gray-100 transition-colors p-4">
                      <span className="text-sm md:text-2xl font-bold text-gray-300 group-hover:text-black transition-colors text-center tracking-widest">{brand.name}</span>
@@ -96,46 +92,69 @@ const Wholesale: React.FC = () => {
         </div>
       </section>
 
-      {/* Mobile Brand Modal */}
+      {/* Brand Modal */}
       <AnimatePresence>
         {selectedBrand && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 md:hidden backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-end md:items-stretch justify-center md:justify-end bg-black/60 backdrop-blur-sm"
             onClick={() => setSelectedBrand(null)}
           >
             <motion.div 
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              initial={window.innerWidth < 768 ? { y: "100%" } : { x: "100%" }}
+              animate={window.innerWidth < 768 ? { y: 0 } : { x: 0 }}
+              exit={window.innerWidth < 768 ? { y: "100%" } : { x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white w-full max-w-sm overflow-hidden shadow-2xl relative flex flex-col"
+              className="bg-white w-full md:w-[450px] max-h-[90vh] md:max-h-none md:h-full overflow-y-auto shadow-2xl relative rounded-t-3xl md:rounded-none flex flex-col"
             >
               <button 
                 onClick={() => setSelectedBrand(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-800"
+                className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-800 hover:bg-white transition-colors"
               >
                 <X size={20} strokeWidth={1.5} />
               </button>
-              <div className="h-48 bg-gray-100 relative">
+              <div className="h-64 md:h-72 bg-gray-100 relative shrink-0">
                 <img 
                   src={selectedBrand.image} 
                   alt={selectedBrand.name} 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8 text-center flex flex-col items-center">
-                <h3 className="text-2xl font-light tracking-widest mb-4">{selectedBrand.name}</h3>
+              <div className="p-8 flex flex-col items-center text-center flex-grow">
+                <h3 className="text-3xl font-light tracking-widest mb-4">{selectedBrand.name}</h3>
                 <p className="text-gray-600 font-light text-sm leading-relaxed mb-8">
                   {selectedBrand.description}
                 </p>
-                <Link to="/contact" onClick={() => setSelectedBrand(null)}>
-                  <button className="bg-[#1A1A1A] text-white px-10 py-3 text-sm font-light hover:bg-black transition-colors w-full">
-                    Contact us
-                  </button>
-                </Link>
+                
+                <div className="grid grid-cols-2 gap-y-8 gap-x-4 border-t border-gray-100 pt-8 w-full text-left mb-8">
+                  <div>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Stores</p>
+                    <p className="text-2xl font-light text-gray-900">12</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Online</p>
+                    <p className="text-2xl font-light text-gray-900">Yes</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Customers</p>
+                    <p className="text-2xl font-light text-gray-900">40M</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Growth YoY</p>
+                    <p className="text-2xl font-light text-green-600">+15%</p>
+                  </div>
+                </div>
+
+                <div className="mt-auto w-full">
+                  <Link to="/contact" onClick={() => setSelectedBrand(null)} className="w-full block">
+                    <button className="bg-[#1A1A1A] text-white px-10 py-4 text-sm font-light hover:bg-black transition-colors w-full">
+                      Contact us
+                    </button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </motion.div>
