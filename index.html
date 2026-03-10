@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YAXA | Official Distributor of Premium Brands</title>
+    <meta name="description" content="Leading franchise operator and official distributor for premium international brands.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#F6F6F6',
+                100: '#E7E7E7',
+                200: '#D1D1D1',
+                300: '#B0B0B0',
+                400: '#888888',
+                500: '#737373',
+                600: '#4D4D4D',
+                700: '#333333',
+                800: '#1A1A1A',
+              },
+              error: {
+                50: '#FFE5E5',
+                100: '#FFCCCC',
+                200: '#FFBFBF',
+                300: '#FF8080',
+                400: '#FF4040',
+                500: '#FF0000',
+                600: '#BF0000',
+                700: '#800000',
+                800: '#524315',
+              },
+              success: {
+                50: '#E6F6E5',
+                100: '#CFEDCC',
+                200: '#C3E9BF',
+                300: '#86D280',
+                400: '#4ABC40',
+                500: '#0DA500',
+                600: '#109204',
+                700: '#0C6304',
+                800: '#074302',
+              },
+              warning: {
+                50: '#FFF0E5',
+                100: '#FFE1CC',
+                200: '#FFDABF',
+                300: '#FFB580',
+                400: '#FF9040',
+                500: '#FF6B00',
+                600: '#BF5000',
+                700: '#803600',
+                800: '#401B00',
+              },
+              info: {
+                50: '#E4F6FF',
+                100: '#CCEEFF',
+                200: '#BFEAFF',
+                300: '#81D5FF',
+                400: '#42C0FF',
+                500: '#00AAFF',
+                600: '#0280BF',
+                700: '#005681',
+                800: '#00334D',
+              }
+            },
+            fontFamily: {
+              heading: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+              body: ['Mulish', 'sans-serif'],
+            },
+            borderWidth: {
+              'sm': '1px',
+              'md': '2px',
+              'lg': '4px',
+            },
+            borderRadius: {
+              'none': '0px',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Mulish', sans-serif;
+        background-color: #FFFFFF;
+        color: #333333; /* Text/body alias */
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Typography Scale Implementation */
+      .text-h1 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 36px; line-height: 44px; }
+      .text-h2 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 28px; line-height: 36px; }
+      .text-h3 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 24px; line-height: 28px; }
+      .text-h4 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 24px; }
+      .text-h5 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 22px; }
+      .text-h6 { font-family: '"Helvetica Neue"', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; }
+      .text-p-lg { font-family: 'Mulish', sans-serif; font-size: 14px; line-height: 16px; }
+      .text-p-md { font-family: 'Mulish', sans-serif; font-size: 12px; line-height: 16px; }
+      .text-p-sm { font-family: 'Mulish', sans-serif; font-size: 12px; line-height: 16px; }
+      .text-p-xsm { font-family: 'Mulish', sans-serif; font-size: 10px; line-height: 12px; }
+
+      @media (min-width: 768px) {
+        .text-h1 { font-size: 46px; line-height: 56px; }
+        .text-h2 { font-size: 36px; line-height: 44px; }
+        .text-h3 { font-size: 28px; line-height: 34px; }
+        .text-h4 { font-size: 24px; line-height: 28px; }
+        .text-h5 { font-size: 18px; line-height: 22px; }
+        .text-h6 { font-size: 16px; line-height: 20px; }
+        .text-p-lg { font-size: 16px; line-height: 20px; }
+        .text-p-md { font-size: 14px; line-height: 16px; }
+      }
+
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+        "framer-motion": "https://esm.sh/framer-motion@^12.34.0"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
