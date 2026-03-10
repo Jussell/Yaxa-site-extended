@@ -18,12 +18,22 @@ const voicesData = [
   {
     title: "Insatiable Curiosity",
     description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity/400/400?grayscale"
+    image: "https://picsum.photos/seed/curiosity/400/500?grayscale"
   },
   {
     title: "Driven by Data",
     description: "We utilize advanced analytics to optimize inventory placement and store layouts, ensuring high conversion without sacrificing the premium aesthetic.",
-    image: "https://picsum.photos/seed/data/400/400?grayscale"
+    image: "https://picsum.photos/seed/data/400/500?grayscale"
+  },
+  {
+    title: "Sustainable Future",
+    description: "Implemented green logistics and carbon-neutral operations across all warehouses, ensuring a better tomorrow.",
+    image: "https://picsum.photos/seed/sustainable/400/500?grayscale"
+  },
+  {
+    title: "Global Reach",
+    description: "Expanding our footprint across continents, bringing premium experiences to new markets and diverse audiences.",
+    image: "https://picsum.photos/seed/global/400/500?grayscale"
   }
 ];
 
@@ -209,47 +219,44 @@ const Wholesale: React.FC = () => {
           </div>
 
           {/* Desktop Layout */}
-          <div className="hidden md:block">
-            <ScrollReveal>
-              <h2 className="text-3xl font-light mb-12">Our Voices</h2>
-            </ScrollReveal>
+          <div className="hidden md:flex gap-12">
+            {/* Left Column */}
+            <div className="w-1/4 shrink-0">
+              <ScrollReveal>
+                <h2 className="text-[56px] font-thin mb-6 tracking-tight leading-none text-gray-900">Our Voices</h2>
+                <p className="text-gray-400 font-light text-sm leading-relaxed mb-8 pr-4">
+                  We have a unique culture because, throughout our history, we have been guided by a family with strong and solid values that have been passed down from generation to generation. These values define how we carry out our activities:
+                </p>
+                <div className="flex gap-4">
+                  <button onClick={prevVoice} className="text-gray-600 hover:text-black transition-colors">
+                    <ArrowLeft size={24} strokeWidth={1} />
+                  </button>
+                  <button onClick={nextVoice} className="text-gray-600 hover:text-black transition-colors">
+                    <ArrowRight size={24} strokeWidth={1} />
+                  </button>
+                </div>
+              </ScrollReveal>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-               <ScrollReveal delay={0.1}>
-                <div className="bg-white p-10 h-full">
-                  <p className="text-xl font-light italic mb-8">"Insatiable Curiosity"</p>
-                  <p className="text-gray-600 font-light leading-relaxed mb-6">
-                    "Retail is no longer just about transactions. It's about creating a theater for the brand where the customer feels the heritage and value in every interaction."
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                       <img src="https://picsum.photos/100/100" alt="Person" className="w-full h-full object-cover grayscale" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium uppercase">Sarah Jenkins</p>
-                      <p className="text-xs text-gray-400">Head of Retail Ops</p>
-                    </div>
-                  </div>
-                </div>
-               </ScrollReveal>
-
-               <ScrollReveal delay={0.2}>
-                <div className="bg-white p-10 h-full">
-                  <p className="text-xl font-light italic mb-8">"Driven by Data"</p>
-                  <p className="text-gray-600 font-light leading-relaxed mb-6">
-                    "We utilize advanced analytics to optimize inventory placement and store layouts, ensuring high conversion without sacrificing the premium aesthetic."
-                  </p>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                       <img src="https://picsum.photos/101/101" alt="Person" className="w-full h-full object-cover grayscale" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium uppercase">David Ross</p>
-                      <p className="text-xs text-gray-400">Commercial Director</p>
-                    </div>
-                  </div>
-                </div>
-               </ScrollReveal>
+            {/* Right Column */}
+            <div className="w-3/4 overflow-hidden">
+               <motion.div 
+                 className="flex gap-8"
+                 animate={{ x: `calc(-${currentVoiceIndex * 33.3333}% - ${currentVoiceIndex * 0.666}rem)` }}
+                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+               >
+                 {voicesData.map((voice, idx) => (
+                   <div key={idx} className="w-[calc(33.333%-1.33rem)] shrink-0 flex flex-col">
+                      <h3 className="text-sm font-light text-gray-400 mb-4">{voice.title}</h3>
+                      <p className="text-sm font-light italic text-gray-500 leading-relaxed mb-8 min-h-[80px]">
+                        {voice.description}
+                      </p>
+                      <div className="w-full aspect-[3/4] bg-gray-200">
+                        <img src={voice.image} alt={voice.title} className="w-full h-full object-cover opacity-80 mix-blend-multiply" />
+                      </div>
+                   </div>
+                 ))}
+               </motion.div>
             </div>
           </div>
         </div>

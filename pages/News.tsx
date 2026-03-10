@@ -1,54 +1,7 @@
 import React from 'react';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { Link } from 'react-router-dom';
-
-const newsItems = [
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity2/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity3/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity4/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity5/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity6/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity7/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity8/400/500?grayscale"
-  },
-  {
-    title: "Insatiable Curiosity",
-    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
-    image: "https://picsum.photos/seed/curiosity9/400/500?grayscale"
-  }
-];
+import { newsItems } from './History';
 
 const NewsItem = ({ item, index }: { item: typeof newsItems[0], index: number }) => (
   <div className="flex flex-col h-full group">

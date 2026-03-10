@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { Link } from 'react-router-dom';
 
 interface Event {
   year: string;
@@ -13,6 +14,63 @@ const events: Event[] = [
   { year: '2017', title: 'Global Partnerships', desc: 'Secured exclusive distribution rights for key European watchmakers.' },
   { year: '2020', title: 'Digital Transformation', desc: 'Launched integrated omnichannel platforms to serve customers during the global shift.' },
   { year: '2023', title: 'Sustainable Future', desc: 'Implemented green logistics and carbon-neutral operations across all warehouses.' },
+];
+
+export const newsItems = [
+  {
+    title: "Insatiable Curiosity",
+    description: "Tireless pursuit of opportunities and ideas that shape tomorrow, combining boldness and wisdom to achieve excellence.",
+    image: "https://picsum.photos/seed/curiosity/400/500?grayscale",
+    category: "CORPORATE"
+  },
+  {
+    title: "Driven by Data",
+    description: "We utilize advanced analytics to optimize inventory placement and store layouts, ensuring high conversion without sacrificing the premium aesthetic.",
+    image: "https://picsum.photos/seed/curiosity2/400/500?grayscale",
+    category: "RETAIL"
+  },
+  {
+    title: "Global Expansion",
+    description: "YAXA expands distribution network to three new territories in Asia, solidifying our global footprint.",
+    image: "https://picsum.photos/seed/curiosity3/400/500?grayscale",
+    category: "WHOLESALE"
+  },
+  {
+    title: "Sustainable Future",
+    description: "Implemented green logistics and carbon-neutral operations across all warehouses.",
+    image: "https://picsum.photos/seed/curiosity4/400/500?grayscale",
+    category: "CORPORATE"
+  },
+  {
+    title: "Digital Transformation",
+    description: "Launched integrated omnichannel platforms to serve customers during the global shift.",
+    image: "https://picsum.photos/seed/curiosity5/400/500?grayscale",
+    category: "TECH"
+  },
+  {
+    title: "New Partnerships",
+    description: "Secured exclusive distribution rights for key European watchmakers.",
+    image: "https://picsum.photos/seed/curiosity6/400/500?grayscale",
+    category: "WHOLESALE"
+  },
+  {
+    title: "Retail Excellence",
+    description: "Opened the first flagship store, marking the beginning of our direct-to-consumer strategy.",
+    image: "https://picsum.photos/seed/curiosity7/400/500?grayscale",
+    category: "RETAIL"
+  },
+  {
+    title: "Foundation",
+    description: "YAXA is founded with a vision to redefine luxury distribution in the region.",
+    image: "https://picsum.photos/seed/curiosity8/400/500?grayscale",
+    category: "CORPORATE"
+  },
+  {
+    title: "Future Outlook",
+    description: "Looking ahead to the next decade of growth and innovation.",
+    image: "https://picsum.photos/seed/curiosity9/400/500?grayscale",
+    category: "CORPORATE"
+  }
 ];
 
 const History: React.FC = () => {
@@ -81,22 +139,25 @@ const History: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-end mb-12">
              <h2 className="text-3xl font-light">Recent News</h2>
-             <a href="#" className="text-sm border-b border-black pb-1 hover:text-gray-600">View Archive</a>
+             <Link to="/news" className="text-sm border-b border-black pb-1 hover:text-gray-600">View Archive</Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <ScrollReveal key={item} delay={item * 0.1}>
-                <div className="bg-white group cursor-pointer h-full">
-                  <div className="h-48 bg-gray-200 overflow-hidden">
-                    <img src={`https://picsum.photos/500/300?random=${item + 20}&grayscale`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="News" />
+            {newsItems.slice(0, 3).map((item, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <Link to={`/news/${index}`} className="block h-full">
+                  <div className="bg-white group cursor-pointer h-full flex flex-col">
+                    <div className="h-48 bg-gray-200 overflow-hidden shrink-0">
+                      <img src={item.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={item.title} />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">{item.category}</span>
+                      <h3 className="text-lg font-light mb-4 group-hover:text-gray-600 transition-colors">{item.title}</h3>
+                      <p className="text-sm text-gray-500 font-light line-clamp-2 mb-4">{item.description}</p>
+                      <span className="text-xs text-black border-b border-black/20 pb-0.5 mt-auto self-start">Read Article</span>
+                    </div>
                   </div>
-                  <div className="p-6">
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-2">Corporate</span>
-                    <h3 className="text-lg font-light mb-4 group-hover:text-gray-600 transition-colors">YAXA expands distribution network to three new territories in Asia.</h3>
-                    <span className="text-xs text-black border-b border-black/20 pb-0.5">Read Article</span>
-                  </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
